@@ -1,0 +1,24 @@
+html
+  head
+    title Torrent File Analyzer
+    link href='/styles/bootstrap.css' media='screen' rel='stylesheet' type='text/css'
+    link href='/styles/style.css' media='screen' rel='stylesheet' type='text/css'
+    link href='/styles/treeview.css' media='screen' rel='stylesheet' type='text/css'
+  body
+    div class='navbar navbar-fixed-top'
+      div class='navbar-inner'
+        div class='container'
+          a class='brand' href='#' Torrent File Analizer
+          div class='nav-collapse'
+            ul class='nav'
+              li
+                a href='/' Home
+              li
+                a href='#' About
+
+    div class='container'
+      == yield
+
+      hr 
+      footer
+        p © mamantoha 2012
