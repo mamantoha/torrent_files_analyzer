@@ -1,5 +1,5 @@
-h2= @info['name']
-
+div class='page-header'
+  h2= @info['name'].dup.force_encoding('utf-8')
 table class='table'
   - @data.each do |k, v|
     tr
