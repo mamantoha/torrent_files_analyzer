@@ -8,6 +8,8 @@ require 'tempfile'
 require 'slim'
 require 'bencode'
 
+require_relative './lib/sinatra/flash/style'
+
 Slim::Engine.set_default_options :pretty => true
 
 def generate_hash(files)
@@ -42,21 +44,6 @@ def get_torrent_from_url(url)
   end
 
   return file
-end
-
-# http://twitter.github.com/bootstrap/javascript.html#alerts
-module Sinatra
-  module Flash
-    module Style
-      def styled_flash(key=:flash)
-        return "" if flash(key).empty?
-        id = (key == :flash ? "flash" : "flash_#{key}")
-        close = '<a class="close" data-dismiss="alert" href="#">×</a>'
-        messages = flash(key).collect {|message| "  <div class='alert alert-#{message[0]}'>#{close}\n #{message[1]}</div>\n"}
-        "<div id='#{id}'>\n" + messages.join + "</div>"
-      end
-    end
-  end
 end
 
 class TorrentFilesAnalyzer < Sinatra::Base
