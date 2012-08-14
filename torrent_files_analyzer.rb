@@ -59,8 +59,12 @@ class TorrentFilesAnalyzer < Sinatra::Base
       tempfile = params[:file][:tempfile]
     elsif params[:url] && !params[:url].empty?
       tempfile = get_torrent_from_url(params[:url])
+      if tempfile.nil?
+        flash[:error] = 'Incorrect URL'
+        redirect '/'
+      end
     else
-      flash[:error] = 'error'
+      flash[:error] = 'Torrent file not specified'
       redirect '/'
     end
 
